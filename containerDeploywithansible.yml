@@ -1,5 +1,7 @@
 ---
 - hosts: websever
+  become: yes
+  become_method: sudo
   tasks:
    # - name: Update apt repo and cache on all Debian/Ubuntu boxes
     #  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
@@ -21,6 +23,11 @@
      # with_items:
       #  - docker
     #  become: true
+    - name: insatll pip3
+      shell: apt install python3-pip -y
+
+    - name: insatll pip3
+      shell: pip3 install docker
 
       
     - name: Log into DockerHub
